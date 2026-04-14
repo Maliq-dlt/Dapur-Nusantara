@@ -15,6 +15,8 @@ interface DishType {
   description: string;
   flavors: Record<string, number>;
   highlightTags: string[];
+  ingredients: string[];
+  steps: string[];
 }
 
 const DISHES: DishType[] = [
@@ -26,7 +28,9 @@ const DISHES: DishType[] = [
     labels: ['VEGETARIAN', 'SARAPAN'],
     description: 'Bubur Manado yang kaya akan serat dari jagung, labu kuning, dan beragam sayuran hijau segar.',
     flavors: { Pedas: 2, Asam: 3, Gurih: 7, Manis: 4, Segar: 8 },
-    highlightTags: ['Segar', 'Gurih']
+    highlightTags: ['Segar', 'Gurih'],
+    ingredients: ['Beras putih 200g', 'Jagung manis pipil 2 buah', 'Labu kuning kupas 200g', 'Daun bayam & kangkung', 'Daun kemangi 2 tangkai', 'Batang serai memarkan', 'Garam & merica secukupnya'],
+    steps: ['Rebus beras bersama serai hingga teksturnya menjadi bubur setengah matang.', 'Masukkan potongan labu kuning dan jagung pipil, aduk terus agar bagian bawah tidak gosong.', 'Setelah sayuran keras matang, masukkan sayuran hijau (bayam, kangkung).', 'Bumbui dengan garam dan merica, lalu masukkan daun kemangi menjelang diangkat.', 'Sajikan selagi panas berdampingan dengan rica roa dan dabu-dabu.']
   },
   {
     id: 'cakalang',
@@ -36,7 +40,9 @@ const DISHES: DishType[] = [
     labels: ['DIASAP', 'PROTEIN'],
     description: 'Ikan cakalang yang diawetkan melalui proses pengasapan tradisional di atas jepitan bambu.',
     flavors: { Pedas: 4, Asam: 5, Gurih: 9, Manis: 1, Segar: 3 },
-    highlightTags: ['Gurih', 'Asam']
+    highlightTags: ['Gurih', 'Asam'],
+    ingredients: ['Ikan Cakalang segar ukuran sedang', 'Garam kasar secukupnya', 'Bambu belah untuk menjepit', 'Sabut kelapa kering (untuk pengasapan)'],
+    steps: ['Bersihkan perut ikan cakalang lalu belah memanjang membentuk pola kupu-kupu.', 'Lumuri dengan garam kasar secara merata.', 'Jepit menggunakan bilah bambu agar daging tetap merentang sempurna saat dipanaskan.', 'Lakukan pengasapan perlahan dengan panas sabut kelapa yang membara, jauhkan dari lidah api langsung.', 'Tunggu sekitar 3-4 jam hingga daging ikan keras, memerah gelap, dan harum asap mengunci rasa.']
   },
   {
     id: 'rica',
@@ -46,7 +52,9 @@ const DISHES: DishType[] = [
     labels: ['PEDAS', 'IKONIK'],
     description: 'Sensasi pedas membara dari cabai rawit yang berpadu dengan keharuman daun kemangi dan jeruk.',
     flavors: { Pedas: 10, Asam: 4, Gurih: 6, Manis: 1, Segar: 4 },
-    highlightTags: ['Pedas', 'Gurih']
+    highlightTags: ['Pedas', 'Gurih'],
+    ingredients: ['Ayam kampung potong 12 bagian', 'Cabai rawit merah 100g (sesuai selera)', 'Cabai merah keriting 50g', 'Bawang merah 12 butir & Bawang putih 5 siung', 'Daun jeruk 5 lembar', 'Daun kemangi segar 2 ikat', 'Jahe 3cm & Serai 2 batang'],
+    steps: ['Tumbuk kasar semua cabai, bawang merah, dan bawang putih.', 'Panaskan minyak, tumis bumbu tumbuk kasar hingga aroma tajam cabai memudar.', 'Masukkan jahe, serai memar, dan robekan daun jeruk. Aduk hingga wangi menguar.', 'Masukkan ayam potong, aduk hingga berlapis bumbu menutupi seluruh permukaannya.', 'Tambahkan sedikit air, masak hingga bumbu menyusut merah pekat, lalu tuang kemangi sebelum diangkat agar segar.']
   },
   {
     id: 'woku',
@@ -56,7 +64,9 @@ const DISHES: DishType[] = [
     labels: ['BERKUAH', 'AROMATIK'],
     description: 'Hidangan berkuah kuning kental yang sarat dengan rempah daun aromatik khas Minahasa.',
     flavors: { Pedas: 6, Asam: 7, Gurih: 8, Manis: 2, Segar: 9 },
-    highlightTags: ['Segar', 'Rempah']
+    highlightTags: ['Segar', 'Rempah'],
+    ingredients: ['Ikan kerapu segar bertulang besar', 'Daun pkamun (pandan) besar', 'Daun jeruk & Daun kunyit iris tipis', 'Kemangi cincang 2 ikat besar', 'Bumbu halus: kunyit, jahe, kemiri, cabai rawit'],
+    steps: ['Sangrai halus kunyit dan kemiri bersama jahe segar.', 'Tumis bumbu halus bersama daun pandan, kunyit dan serai hingga bumbu kuning mendarat wangi.', 'Tuangkan sedikit air mendidih, masukkan irisan tomat dan belimbing wuluh untuk asam segar.', 'Letakkan ikan dengan hati-hati. Siram kuahnya secara konstan.', 'Lima menit sebelum diangkat, taburkan lautan daun kemangi ke atas kuah woku. Tutup panci 30 detik untuk mengunci uapnya.']
   },
   {
     id: 'paniki',
@@ -66,7 +76,9 @@ const DISHES: DishType[] = [
     labels: ['EKSOTIS', 'PEDAS'],
     description: 'Sajian eksotis daging kelelawar pemakan buah yang dimasak dalam kuah santan pedas.',
     flavors: { Pedas: 8, Asam: 2, Gurih: 9, Manis: 3, Segar: 1 },
-    highlightTags: ['Gurih', 'Pedas']
+    highlightTags: ['Gurih', 'Pedas'],
+    ingredients: ['Daging kelelawar hutan (bersihkan, bakar bulunya)', 'Santan kelapa pekat 500ml', 'Cabai rawit gunung porsi besar', 'Bawang merah dan bawang putih', 'Jahe, lengkuas (porsi ganda untuk meredakan bau)'],
+    steps: ['Setelah bulu dibakar halus, daging direbus dengan jahe ekstra untuk meluruhkan wangi alam yang tajam.', 'Tumis cabai rawit ulek bersama ketumbar, lengkuas dan bumbu dasar khas.', 'Masukkan potongan daging yang selesai direbus. Aduk agar bumbu pedas masuk ke pori-pori.', 'Tambahkan santan kelapa kental.', 'Rebus dengan api super kecil (slow cook) hingga santan berminyak, membungkus setiap lapisan saraf daging dengan kekayaan gurih-pedas mutlak.']
   }
 ];
 
@@ -273,16 +285,17 @@ export function FeaturedDishes() {
             
             <motion.div
               layoutId={`card-${selectedDish.id}`}
-              className="w-full max-w-5xl h-[80vh] md:h-full max-h-[800px] bg-surface-container flex flex-col md:flex-row overflow-hidden relative pointer-events-auto"
+              className="w-full max-w-6xl h-[90vh] bg-surface-container flex flex-col md:flex-row overflow-hidden relative pointer-events-auto rounded-xl shadow-2xl"
             >
               <button 
                 onClick={() => setSelectedDish(null)}
-                className="absolute top-6 right-6 z-50 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center border border-white/10 hover:bg-white hover:text-black transition-colors"
+                className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-black/60 text-white flex items-center justify-center border border-white/20 hover:bg-white hover:text-black transition-all cursor-interact backdrop-blur-md"
               >
                 ✕
               </button>
 
-              <motion.div layoutId={`image-${selectedDish.id}`} className="w-full md:w-1/2 h-1/2 md:h-full relative">
+              {/* Fixed Left Image Side */}
+              <motion.div layoutId={`image-${selectedDish.id}`} className="w-full md:w-1/2 h-[40vh] md:h-full relative shrink-0">
                 <Image 
                   src={selectedDish.image} 
                   alt={selectedDish.name}
@@ -290,14 +303,19 @@ export function FeaturedDishes() {
                   className="object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-surface-container via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-surface-container via-transparent to-transparent md:opacity-80 opacity-100" />
               </motion.div>
 
-              <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center overflow-y-auto no-scrollbar relative">
+              {/* Scrollable Right Content Side */}
+              <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-start overflow-y-auto overflow-x-hidden relative scroll-smooth custom-modal-scroll">
+                
+                {/* Header Info */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="pb-8 border-b border-outline-variant/30 shrink-0"
                 >
                   <div className="flex gap-2 mb-6">
                     {selectedDish.labels.map((label, i) => (
@@ -311,30 +329,109 @@ export function FeaturedDishes() {
                     {selectedDish.name}
                   </motion.h3>
                   
-                  <p className="text-on-surface-variant font-body text-lg leading-relaxed mb-10">
+                  <p className="text-on-surface-variant font-body text-lg leading-relaxed">
                     {selectedDish.description} 
-                    {" "}Masakan ini mewakili kekayaan historis persilangan budaya rempah di semenanjung utara Sulawesi, yang menggabungkan metode masak kuno dengan keberanian profil rasa yang menyala.
                   </p>
+                </motion.div>
 
-                  <div className="w-full h-[1px] bg-outline-variant/30 mb-8" />
-
-                  <h4 className="font-label uppercase tracking-[0.2em] text-xs text-secondary mb-6">Anatomi Rasa</h4>
-                  <div className="flex flex-wrap gap-4">
-                    {Object.entries(selectedDish.flavors).map(([flavor, score]) => (
-                      <div key={flavor} className="flex items-center gap-3">
-                        <span className="font-label text-xs uppercase w-16 text-on-surface/60">{flavor}</span>
-                        <div className="flex gap-1">
+                {/* Anatomi Rasa */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                  className="py-10 border-b border-outline-variant/30 shrink-0"
+                >
+                  <h4 className="font-label uppercase tracking-[0.2em] text-xs text-secondary mb-8 flex items-center gap-4">
+                    <span className="w-8 h-[1px] bg-secondary" /> Anatomi Rasa
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                    {Object.entries(selectedDish.flavors).map(([flavor, score], index) => (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 * index }}
+                        viewport={{ once: true }}
+                        key={flavor} 
+                        className="flex items-center justify-between"
+                      >
+                        <span className="font-label text-xs uppercase text-on-surface/60 tracking-wider p-1">{flavor}</span>
+                        <div className="flex gap-1.5">
                           {[...Array(10)].map((_, i) => (
                             <div 
                               key={i} 
-                              className={`w-2 h-4 ${i < score ? (score >= 8 ? 'bg-[#C4522A]' : 'bg-[#E8A317]') : 'bg-white/10'}`} 
+                              className={`w-2 h-4 ${i < score ? (score >= 8 ? 'bg-[#C4522A]' : 'bg-secondary') : 'bg-white/5'}`} 
                             />
                           ))}
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </motion.div>
+
+                {/* Komposisi Bumbu */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                  className="py-10 border-b border-outline-variant/30 shrink-0"
+                >
+                  <h4 className="font-label uppercase tracking-[0.2em] text-xs text-primary-fixed mb-8 flex items-center gap-4">
+                    <span className="w-8 h-[1px] bg-primary-fixed" /> Ensiklopedia Bumbu
+                  </h4>
+                  <ul className="space-y-4">
+                    {selectedDish.ingredients.map((item, idx) => (
+                      <motion.li 
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.05 * idx }}
+                        key={idx} 
+                        className="flex gap-4 font-body text-on-surface-variant/80 items-start"
+                      >
+                        <span className="text-secondary mt-0.5">✦</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </motion.div>
+
+                {/* Ritual Memasak */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                  className="py-10 shrink-0 mb-10"
+                >
+                  <h4 className="font-label uppercase tracking-[0.2em] text-xs text-cream mb-8 flex items-center gap-4">
+                    <span className="w-8 h-[1px] bg-cream" /> Ritual Memasak
+                  </h4>
+                  <div className="space-y-8 relative before:absolute before:inset-0 before:ml-3 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-outline-variant/30 before:to-transparent">
+                    {selectedDish.steps.map((step, idx) => (
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.9, filter: 'blur(4px)' }}
+                        whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                        transition={{ duration: 0.6 }}
+                        key={idx} 
+                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+                      >
+                        {/* Dot indicator */}
+                        <div className="flex items-center justify-center w-6 h-6 rounded-full border-2 border-surface-container bg-surface-container-highest shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors duration-300">
+                          <span className="w-2 h-2 bg-secondary rounded-full" />
+                        </div>
+                        {/* Content box */}
+                        <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] p-5 rounded-lg border border-outline-variant/20 bg-surface-container-low hover:bg-surface-container-highest transition-colors">
+                          <div className="font-label text-[10px] text-secondary mb-2 tracking-widest">LANGKAH {idx + 1}</div>
+                          <p className="font-body text-sm text-on-surface-variant leading-relaxed">{step}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+
               </div>
             </motion.div>
           </div>
