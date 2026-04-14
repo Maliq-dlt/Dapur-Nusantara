@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import { Newsreader, Inter, Space_Grotesk } from 'next/font/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css'; // Global styles
 
 const newsreader = Newsreader({ 
@@ -31,6 +32,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="id" className={`${newsreader.variable} ${inter.variable} ${spaceGrotesk.variable} dark`}>
       <body className="bg-background text-on-surface font-body selection:bg-secondary selection:text-on-secondary-fixed antialiased" suppressHydrationWarning>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
