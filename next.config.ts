@@ -8,11 +8,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  // GitHub Pages requires static export and unoptimized images
-  output: 'export',
-  basePath: '/Dapur-Nusantara',
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
