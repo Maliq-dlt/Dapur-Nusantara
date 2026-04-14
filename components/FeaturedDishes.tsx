@@ -229,6 +229,7 @@ export function FeaturedDishes() {
                     src={dish.image} 
                     alt={dish.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, 400px"
                     className="object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                     referrerPolicy="no-referrer"
                   />
@@ -300,6 +301,8 @@ export function FeaturedDishes() {
                   src={selectedDish.image} 
                   alt={selectedDish.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={90}
                   className="object-cover"
                   referrerPolicy="no-referrer"
                 />

@@ -98,6 +98,8 @@ export function RegionalGrid() {
                 src={region.image} 
                 alt={region.name}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                quality={85}
                 className="object-cover transition-all duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
                 referrerPolicy="no-referrer"
               />
