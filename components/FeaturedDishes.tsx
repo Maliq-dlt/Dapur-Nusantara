@@ -307,7 +307,7 @@ export function FeaturedDishes() {
                     ))}
                   </div>
                   
-                  <motion.h3 layoutId={`title-${selectedDish.id}`} className="font-headline text-5xl md:text-7xl italic text-primary-fixed mb-6">
+                  <motion.h3 layoutId={`title-${selectedDish.id}`} className="font-headline text-5xl md:text-7xl italic text-primary-fixed mb-6 leading-normal pt-2">
                     {selectedDish.name}
                   </motion.h3>
                   

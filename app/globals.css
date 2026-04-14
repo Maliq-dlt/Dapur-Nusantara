@@ -35,6 +35,13 @@ body {
   font-family: var(--font-body);
 }
 
+/* Force hide native cursor on desktop elements (fixes double cursor) */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
 /* Editorial Grain Texture Overlay */
 .grain-overlay::after {
   content: '';
