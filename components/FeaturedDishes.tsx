@@ -51,7 +51,7 @@ const DISHES: DishType[] = [
   {
     id: 'woku',
     name: 'Woku Belanga',
-    image: 'https://picsum.photos/seed/woku/400/600',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAMs7iF1tK9s3W_Nf8yW6_Xv3uHq9MZy7_nK3X_sH9D_k4n8Y_P2E0H6xJk9dJ1c_G7V6JcF0sVyL5Mh9dF5D_YF2J9O7I6O8_a3A1Yq9R_h6d1Yv5K9aJ6W9aJ6_b3nF2H_K1Yv5K9aJ6W9aJ6_b3nF2H',
     tags: ['berkuah', 'segar', 'rempah-kuat'],
     labels: ['BERKUAH', 'AROMATIK'],
     description: 'Hidangan berkuah kuning kental yang sarat dengan rempah daun aromatik khas Minahasa.',
@@ -61,7 +61,7 @@ const DISHES: DishType[] = [
   {
     id: 'paniki',
     name: 'Paniki',
-    image: 'https://picsum.photos/seed/paniki/400/600',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB2e8wA3J_H3Z6X9F7O2J8r_O8B9X6W5Z7D3F6X_Z8O9J1X_O9U8D2J5m8sK_J6X9F7O2J8r_O8B9X6W5Z7D3F6X_Z8O9J1X_O9U8D2J5m8sK',
     tags: ['pedas', 'rempah-kuat'],
     labels: ['EKSOTIS', 'PEDAS'],
     description: 'Sajian eksotis daging kelelawar pemakan buah yang dimasak dalam kuah santan pedas.',
@@ -84,6 +84,16 @@ export function FeaturedDishes() {
   const [activeFilter, setActiveFilter] = useState('all');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [filteredDishes, setFilteredDishes] = useState(DISHES);
+  const [selectedDish, setSelectedDish] = useState<DishType | null>(null);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedDish) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [selectedDish]);
 
   // Smooth filter transition with a slight delay for animation
   useEffect(() => {
@@ -193,21 +203,25 @@ export function FeaturedDishes() {
             {filteredDishes.map((dish) => (
               <motion.div
                 key={dish.id}
+                layoutId={`card-${dish.id}`}
                 layout
                 initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
                 animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="min-w-[400px] aspect-[3/4] bg-surface-container-low group cursor-pointer relative overflow-hidden snap-start"
+                onClick={() => setSelectedDish(dish)}
+                className="min-w-[400px] aspect-[3/4] bg-surface-container-low group cursor-pointer relative overflow-hidden snap-start cursor-interact"
               >
-                <Image 
-                  src={dish.image} 
-                  alt={dish.name}
-                  fill
-                  className="object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80" />
+                <motion.div layoutId={`image-${dish.id}`} className="absolute inset-0">
+                  <Image 
+                    src={dish.image} 
+                    alt={dish.name}
+                    fill
+                    className="object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80" />
+                </motion.div>
                 
                 <div className="absolute bottom-0 left-0 p-8 w-full z-10 group-hover:opacity-0 transition-opacity duration-300">
                   <div className="flex gap-2 mb-4">
@@ -217,7 +231,7 @@ export function FeaturedDishes() {
                       </span>
                     ))}
                   </div>
-                  <h3 className="font-headline text-4xl italic text-cream mb-2">{dish.name}</h3>
+                  <motion.h3 layoutId={`title-${dish.id}`} className="font-headline text-4xl italic text-cream mb-2">{dish.name}</motion.h3>
                   <p className="text-on-surface-variant font-body text-sm line-clamp-2">
                     {dish.description}
                   </p>
@@ -244,6 +258,88 @@ export function FeaturedDishes() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Expanded Modal View */}
+      <AnimatePresence>
+        {selectedDish && (
+          <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-10 pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedDish(null)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm pointer-events-auto cursor-pointer"
+            />
+            
+            <motion.div
+              layoutId={`card-${selectedDish.id}`}
+              className="w-full max-w-5xl h-[80vh] md:h-full max-h-[800px] bg-surface-container flex flex-col md:flex-row overflow-hidden relative pointer-events-auto"
+            >
+              <button 
+                onClick={() => setSelectedDish(null)}
+                className="absolute top-6 right-6 z-50 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center border border-white/10 hover:bg-white hover:text-black transition-colors"
+              >
+                ✕
+              </button>
+
+              <motion.div layoutId={`image-${selectedDish.id}`} className="w-full md:w-1/2 h-1/2 md:h-full relative">
+                <Image 
+                  src={selectedDish.image} 
+                  alt={selectedDish.name}
+                  fill
+                  className="object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-surface-container via-transparent to-transparent opacity-80" />
+              </motion.div>
+
+              <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center overflow-y-auto no-scrollbar relative">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <div className="flex gap-2 mb-6">
+                    {selectedDish.labels.map((label, i) => (
+                      <span key={i} className={`px-4 py-1.5 font-label text-xs tracking-widest ${label === 'PEDAS' ? 'bg-error-container text-on-error-container' : 'bg-surface-container-highest text-on-surface'}`}>
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <motion.h3 layoutId={`title-${selectedDish.id}`} className="font-headline text-5xl md:text-7xl italic text-primary-fixed mb-6">
+                    {selectedDish.name}
+                  </motion.h3>
+                  
+                  <p className="text-on-surface-variant font-body text-lg leading-relaxed mb-10">
+                    {selectedDish.description} 
+                    {" "}Masakan ini mewakili kekayaan historis persilangan budaya rempah di semenanjung utara Sulawesi, yang menggabungkan metode masak kuno dengan keberanian profil rasa yang menyala.
+                  </p>
+
+                  <div className="w-full h-[1px] bg-outline-variant/30 mb-8" />
+
+                  <h4 className="font-label uppercase tracking-[0.2em] text-xs text-secondary mb-6">Anatomi Rasa</h4>
+                  <div className="flex flex-wrap gap-4">
+                    {Object.entries(selectedDish.flavors).map(([flavor, score]) => (
+                      <div key={flavor} className="flex items-center gap-3">
+                        <span className="font-label text-xs uppercase w-16 text-on-surface/60">{flavor}</span>
+                        <div className="flex gap-1">
+                          {[...Array(10)].map((_, i) => (
+                            <div 
+                              key={i} 
+                              className={`w-2 h-4 ${i < score ? (score >= 8 ? 'bg-[#C4522A]' : 'bg-[#E8A317]') : 'bg-white/10'}`} 
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

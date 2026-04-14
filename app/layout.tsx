@@ -1,7 +1,8 @@
 import type {Metadata} from 'next';
 import { Newsreader, Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css'; // Global styles
-
+import SmoothScrolling from '@/components/SmoothScrolling';
+import CustomCursor from '@/components/CustomCursor';
 const newsreader = Newsreader({ 
   subsets: ['latin'], 
   variable: '--font-newsreader',
@@ -29,8 +30,11 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="id" className={`${newsreader.variable} ${inter.variable} ${spaceGrotesk.variable} dark`}>
-      <body className="bg-background text-on-surface font-body selection:bg-secondary selection:text-on-secondary-fixed antialiased" suppressHydrationWarning>
-        {children}
+      <body className="bg-background text-on-surface font-body selection:bg-secondary selection:text-on-secondary-fixed antialiased cursor-none" suppressHydrationWarning>
+        <SmoothScrolling>
+          <CustomCursor />
+          {children}
+        </SmoothScrolling>
       </body>
     </html>
   );
