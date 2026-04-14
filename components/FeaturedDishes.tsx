@@ -307,7 +307,10 @@ export function FeaturedDishes() {
               </motion.div>
 
               {/* Scrollable Right Content Side */}
-              <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-start overflow-y-auto overflow-x-hidden relative scroll-smooth custom-modal-scroll">
+              <div 
+                className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-start overflow-y-auto overflow-x-hidden relative scroll-smooth custom-modal-scroll"
+                data-lenis-prevent="true"
+              >
                 
                 {/* Header Info */}
                 <motion.div
