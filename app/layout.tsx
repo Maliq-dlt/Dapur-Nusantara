@@ -3,6 +3,7 @@ import { Newsreader, Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css'; // Global styles
 import SmoothScrolling from '@/components/SmoothScrolling';
 import CustomCursor from '@/components/CustomCursor';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const newsreader = Newsreader({ 
   subsets: ['latin'], 
   variable: '--font-newsreader',
@@ -35,6 +36,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <CustomCursor />
           {children}
         </SmoothScrolling>
+        <SpeedInsights />
       </body>
     </html>
   );
